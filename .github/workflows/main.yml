@@ -35,7 +35,7 @@ jobs:
         #  body:  |
         #    Build job ( ${{ github.job }} ) of ${{ github.repository }} completed successfully! 
         #    Commit msg: ${{ github.event.head_commit.message }}
-         html_body: file://result.html
+         html_body: file://1926_1708514905.mp4
          ignore_cert: true
          priority: high
 
@@ -51,4 +51,4 @@ jobs:
           subject: mail title.
           body: file://README.md
           contentType: text/html
-          attachments: file://attachmets.json
+          attachments: file://1926_1708514905.mp4
