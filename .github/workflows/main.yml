@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    #   分 时 日 月 周
+    - cron: '*/1 * * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.event.head_commit.message, 'GitHubAction')"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+         server_address: smtp.163.com
+         server_port: 465
+#          server_address: smtp.gmail.com
+#          server_port: 465
+        #  server_address: smtp.exmail.qq.com
+        #  server_port: 465
+         username: ${{ secrets.MAIL_NAME }}
+         password: ${{ secrets.MAIL_PWD }}
+         subject: "【警惕网络诈骗,人人有责】"
+         to: ecochainliesstop@gmail.com
+         from:  Policy@999.com
+         secure: true
+        #  body:  |
+        #    Build job ( ${{ github.job }} ) of ${{ github.repository }} completed successfully! 
+        #    Commit msg: ${{ github.event.head_commit.message }}
+         html_body: file://result.html
+         ignore_cert: true
+         priority: high
+
+      - name: Send email
+        uses: devellany/send-mailer@v1.0.2
+        with:
+          host: smtp.163.com
+          account: ${{secrets.MAIL_NAME}}
+          password: ${{secrets.MAIL_PWD}}
+          sender: devellany
+          from: Policy@999.com
+          to: devellay@dico.me
+          subject: mail title.
+          body: file://README.md
+          contentType: text/html
+          attachments: file://attachmets.json
