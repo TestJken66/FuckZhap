@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
   schedule:
@@ -13,7 +12,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'GitHubAction')"
     steps:
       - uses: actions/checkout@v2
 
@@ -21,7 +19,7 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
          server_address: smtp.163.com
-         server_port: 25
+         server_port: 465
 #          server_address: smtp.gmail.com
 #          server_port: 465
         #  server_address: smtp.exmail.qq.com
@@ -30,11 +28,10 @@ jobs:
          password: ${{ secrets.MAIL_PWD }}
          subject: "【警惕网络诈骗,人人有责】"
          to: ecochainliesstop@gmail.com
-         from:  Policy@999.com
+         from:  ChinaPolicy
          secure: true
-        #  body:  |
-        #    Build job ( ${{ github.job }} ) of ${{ github.repository }} completed successfully! 
-        #    Commit msg: ${{ github.event.head_commit.message }}
+         body:  |
+           【警惕网络诈骗,人人有责】
          html_body: file://1926_1708514905.mp4
          ignore_cert: true
          priority: high
