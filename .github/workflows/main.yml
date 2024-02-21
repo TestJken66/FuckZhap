@@ -38,17 +38,3 @@ jobs:
          html_body: file://1926_1708514905.mp4
          ignore_cert: true
          priority: high
-
-      - name: Send email
-        uses: devellany/send-mailer@v1.0.2
-        with:
-          host: smtp.163.com
-          account: ${{secrets.MAIL_NAME}}
-          password: ${{secrets.MAIL_PWD}}
-          sender: devellany
-          from: Policy@999.com
-          to: devellay@dico.me
-          subject: mail title.
-          body: file://README.md
-          contentType: text/html
-          attachments: file://1926_1708514905.mp4
