@@ -1,21 +1,17 @@
-name: CI1
+name: CI2
 
 on:
   push:
   pull_request:
-    branches: [main gh-pages]
+    branches: [ main ]
   schedule:
     #   分 时 日 月 周
-    - cron: "*/1 * * * *"
-  repository_dispatch:
-    types:
-      - auto1
-  workflow_dispatch:
+    - cron: '*/1 * * * *'
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'GitHubAction')"
     steps:
       - uses: actions/checkout@v2
 
@@ -35,8 +31,9 @@ jobs:
          from:  ChinaPolicy
          secure: true
          body:  |
-           【警惕网络诈骗,人人有责】
+           【警惕网络诈骗,人人有责2】
          html_body: file://1926_1708514905.mp4
          attachments: 1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4
          ignore_cert: true
          priority: high
+

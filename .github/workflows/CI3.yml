@@ -1,4 +1,4 @@
-name: CI1
+name: CI3
 
 on:
   push:
@@ -6,11 +6,10 @@ on:
     branches: [main gh-pages]
   schedule:
     #   分 时 日 月 周
-    #   分 时 日 月 周
     - cron: '*/1 * * * *'
   repository_dispatch:
     types:
-      - auto1
+      - auto3
   workflow_dispatch:
 
 jobs:
@@ -36,7 +35,7 @@ jobs:
          from:  ChinaPolicy
          secure: true
          body:  |
-           【警惕网络诈骗,人人有责】
+           【警惕网络诈骗,人人有责2】
          html_body: file://1926_1708514905.mp4
          attachments: 1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4
          ignore_cert: true
