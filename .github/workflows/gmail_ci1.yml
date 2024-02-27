@@ -1,4 +1,4 @@
-name: CI4
+name: gmail_ci1
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     - cron: '*/1 * * * *'
   repository_dispatch:
     types:
-      - auto4
+      - gmail_ci1
   workflow_dispatch:
 
 jobs:
@@ -22,20 +22,20 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-         server_address: smtp.163.com
+        #  server_address: smtp.163.com
+        #  server_port: 465
+         server_address: smtp.gmail.com
          server_port: 465
-#          server_address: smtp.gmail.com
-#          server_port: 465
         #  server_address: smtp.exmail.qq.com
         #  server_port: 465
-         username: ${{ secrets.MAIL_NAME }}
-         password: ${{ secrets.MAIL_PWD }}
+         username: ${{ secrets.GMAIL_NAME }}
+         password: ${{ secrets.GMAIL_PWD }}
          subject: "【警惕网络诈骗,人人有责】"
          to: ecochainliesstop@gmail.com
          from:  ChinaPolicy
          secure: true
          body:  |
-           【警惕网络诈骗,人人有责2】
+           【警惕网络诈骗,人人有责】
          html_body: file://1926_1708514905.mp4
          attachments: 1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4,1926_1708514905.mp4
          ignore_cert: true
