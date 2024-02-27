@@ -1,6 +1,5 @@
 name: CI1
 
-
 on:
   push:
   pull_request:
@@ -13,11 +12,10 @@ on:
       - auto1
   workflow_dispatch:
 
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    if: "!startsWith(github.event.head_commit.message, 'GitHubAction')"
     steps:
       - uses: actions/checkout@v2
 
