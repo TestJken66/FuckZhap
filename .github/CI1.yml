@@ -1,12 +1,13 @@
 name: CI1
 
+
 on:
   push:
   pull_request:
-    branches: [ main ]
+    branches: [main gh-pages]
   schedule:
     #   分 时 日 月 周
-    - cron: '*/1 * * * *'
+    - cron: "*/1 * * * *"
   repository_dispatch:
     types:
       - auto1
