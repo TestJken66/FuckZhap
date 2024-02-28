@@ -8,19 +8,19 @@ from email.header import Header
 
 import os
 # 从环境变量获取口令
-mail_pass = os.getenv('EMAIL_PASS', '默认值')
+mail_pass = os.getenv('EMAIL_PASS2', '默认值')
 
 # 第三方 SMTP 服务
 mail_host = "smtp.163.com"  # 设置服务器
-mail_user = "chinapolicy110_365@163.com"    # 用户名
-# mail_pass = ""   # 口令
+mail_user = "chinapolicy110@163.com"    # 用户名
+# mail_pass = "KEMJEXTPIQLPENGG"   # 口令
 
-sender = 'chinapolicy110_365@163.com'
+sender = 'chinapolicy110@163.com'
 receivers = ['ecochainliesstop@gmail.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
 # 创建一个带附件的实例
 message = MIMEMultipart()
-message['From'] = Header("chinapolicy110_365@163.com", 'utf-8')
+message['From'] = Header("chinapolicy110@163.com", 'utf-8')
 message['To'] = "ecochainliesstop@gmail.com"  # 直接使用字符串赋值
 subject = '【警惕网络诈骗,人人有责】'
 message['Subject'] = Header(subject, 'utf-8')
@@ -34,6 +34,7 @@ att.set_payload(open('1926_1708514905.mp4', 'rb').read())
 encoders.encode_base64(att)
 att.add_header('Content-Disposition', 'attachment; filename="1926_1708514905.mp4"')
 message.attach(att)
+
 
 for i in range(20):
     try:
